@@ -7,9 +7,27 @@
 
 {% block content %}
 <div class="container">
+    {% for contributor in contributors %}
+        <h3>Contributor: {{contributor}}</h3>
+    {% endfor %}
     <h1>Trump Tweets</h1>
-    <h3>{{ contributors.text }}</h3>
-    <h6>{{ tweets }}</h6>
+    {% for tweet in tweets %}
+    <h6>{{ tweet }}</h6>
+    <h1>{{ tweet.text }}</h1>
+    <h6>Contributors: {{ tweet.contributors }}</h6>
+    <h6>Is Truncated: {{ tweet.truncated }}</h6>
+    <h6>Is Quote Status: {{ tweet.is_quote_status}}</h6>
+    <h6>In Reply Status ID: {{ tweet.in_reply_to_status_id}}</h6>
+    <h6>Tweet ID: {{ tweet.id }}</h6>
+    <h6>Favorite Count: {{ tweet.favorite_count }}</h6>
+    <h6>Source: {{ tweet.source|safe|escape }}</h6>
+    <h6>Retweeted: {{ tweet.retweeted }}</h6>
+    <h6>Coordinates: {{ tweet.coordinates }}</h6>
+    <!--<h6>Entities: {{ tweet.entities }}</h6>-->
+    {% for key, value in tweet.entities.iteritems %}
+        <h6>{{ key }}: {{ value }}</h6>
+    {% endfor %}
+    {% endfor %}
     <br>
 </div>
 {% endblock %}
