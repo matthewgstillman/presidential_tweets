@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Home</title>
+{% endblock%}
+
+
+{% block content %}
+<div class="container">
+    <h1>Trump Tweets</h1>
+    <h3>{{ contributors.text }}</h3>
+    <h6>{{ tweets }}</h6>
+    <br>
+</div>
+{% endblock %}
